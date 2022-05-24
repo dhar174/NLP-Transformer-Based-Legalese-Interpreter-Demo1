@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <style>
+        h1 {
+            color: Green;
+        }
+
+        div.scroll {
+            margin: 4px, 4px;
+            padding: 4px;
+            background-color: rgba(255, 255, 255, 0.97);
+
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align: justify;
+            display: flex;
+            justify-content: center;
+            align-items: normal;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <center>
+        <h1>Results from Model</h1>
+        <div class="scroll">
+
+            <ol id="results">
+                <p>
+                </p>
+                {% block content %}
+                {% for dict in results %}
+                {% for key, value in dict.items() %}
+                {% if key in label_types[0] %}
+                <dl>
+                    <p>
+                        <dt>
+                            <font color="blue">
+                                {{ key }} (Provision or Instrument Lookup)
+                            </font>
+                        </dt>
+                    </p>
+                    <br>
+                    <dd>"{{ value }}"</dd>
+                </dl>
+                <br>
+                {% elif key in label_types[1] %}
+                <dl>
+                    <p>
+                        <dt>
+                            <font color="Green">
+                                {{ key }} (Entity)
+                            </font>
+                        </dt>
+                    </p>
+                    <br>
+                    <dd>"{{ value }}"</dd>
+                </dl>
+                <br>
+                {% elif key in label_types[2] %}
+                <dl>
+                    <p>
+                        <dt>
+                            <font color="red">
+                                {{ key }} (Category)
+                            </font>
+                        </dt>
+                    </p>
+                    <br>
+                    <dd>"{{ value }}"</dd>
+                </dl>
+                <br>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                {% endblock %}
+                <p>
+                </p>
+
+
+            </ol>
+
+        </div>
+    </center>
+</body>
+
+</html>
