@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Legalese Interpreter-File Upload</title>
+    <meta name="description" content="NLP Transformer legal document parser demo" />
+	<meta name="author" content="Charles Niswander II">
+    <meta name="theme-color" content="#5D92A8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+	<link rel="stylesheet"
+	href="/static/nlpuploadstylesheet.css">
+</head>  
+
+<body>
+  <div class="container">
+
+    <div style="clear: both">
+        &nbsp;
+
+
+    </div>
+
+</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About Me</a></li>
+  </ul>
+
+   <header/>
+	  <h1>NLP Transformer-Based Legalese Interpreter</h1>
+      <img width=70% height=500px src=/static/cytonn-photography-GJao3ZTX9gU-unsplash.jpg alt="Signing a Legal Document"/>
+    <header/>
+	
+<main>
+	
+  
+
+    <h2>Document Upload</h2>
+    <p>Upload a legal document.</p>
+
+  <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+    
+        <input type="file" name="file" id="file">
+		
+        <input type="submit" value="Submit" id="Submit">
+        
+  </form>
+  
+ </main>
+  
+ <br/>
+ 
+    <footer>
+      <p>Application created by Charles Niswander&emsp;Website design created by Kimberly Weiss 2022&emsp;&emsp;&emsp;Disclaimer: This is not to be used as legal advice. Author assumes no liability
+      and offers no guarantee of security of uploaded documents.</p>
+    </footer>
+	
+</body>
+
+
+</html>

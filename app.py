@@ -27,13 +27,13 @@ from flask import Flask, flash, request, redirect, url_for, render_template, cur
 #now = datetime.now()
 import flask_socketio
 from flask_socketio import SocketIO, emit, send, join_room, leave_room, close_room, rooms, disconnect
-
+#from app import app as application
 
 from threading import Lock
 import threading
 
-
-UPLOAD_FOLDER = '/'
+current = os.getcwd()
+UPLOAD_FOLDER = current
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx', 'rtf', 'png'}
 
 
@@ -168,7 +168,7 @@ with app.app_context():
 
         time.sleep(1)
 
-        return render_template('index.html',  uploaded=current_app.config['UPLOADED'], iframe='box')
+        return render_template('nlpresults.html',  uploaded=current_app.config['UPLOADED'], iframe='box')
         # return Response(stream_with_context(generate()), mimetype='text/event-stream')
 
     @ current_app.route('/box', methods=['GET', 'POST'], endpoint='box')
@@ -202,13 +202,15 @@ with app.app_context():
     def index():
         assign_user()
         if(current_app.config['UPLOADED']):
-            return render_template('index.html', uploaded=current_app.config['UPLOADED'], iframe='box')
+            return render_template('nlpresults.html', uploaded=current_app.config['UPLOADED'], iframe='box')
         else:
 
             return redirect(url_for('upload'))
 
     @ current_app.route('/upload', methods=['GET', 'POST'], endpoint='upload')
     def upload():
+        global UPLOAD_FOLDER
+        print(UPLOAD_FOLDER)
 
         if request.method == 'POST':
             # check if the post request has the file part
@@ -223,7 +225,7 @@ with app.app_context():
                 return redirect(request.url)
             if file and allowed_file(file.filename):
 
-                current_app.config['filenamestr'] = "/" + \
+                current_app.config['filenamestr'] = UPLOAD_FOLDER + \
                     secure_filename(file.filename)
                 print(os.path.join(
                     UPLOAD_FOLDER, current_app.config['filenamestr']))
@@ -238,7 +240,7 @@ with app.app_context():
 
         if(current_app.config['UPLOADED']):
             return redirect(url_for('result'))
-        return render_template('upload.html')
+        return render_template('nlpupload.html')
 
     @current_app.route('/uploads/<filename>')
     def download_file(filename):
@@ -250,6 +252,8 @@ with app.app_context():
 
 
 if __name__ == '__main__':
-    current_app.run(host='0.0.0.0', port=5000, threaded=True,
-                    load_dotenv=True, debug=False, ssl_context='adhoc')
+    app.run(host='192.168.0.190', port=5000, threaded=True,
+            load_dotenv=True, debug=True)
     # current_app.run(host='
+else:
+    application = app

@@ -1,20 +1,26 @@
 # syntax=docker/dockerfile:1
-FROM python:3.6-slim-buster
+FROM python:3.6-buster
 WORKDIR /app
 
-COPY . .
-COPY requirements.txt requirements.txt
+LABEL maintainer="darf333@gmail.com"
 
-RUN pip3 install -r requirements.txt
+ENV LISTEN_PORT 5000
+
+EXPOSE 5000
+
+
+COPY . /app
+WORKDIR /app
+
+RUN pip3 install --force-reinstall -r requirements.txt
 RUN pip3 install https://blackstone-model.s3-eu-west-1.amazonaws.com/en_blackstone_proto-0.0.1.tar.gz
 
 
 
-EXPOSE 5000
 
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=development
 RUN export FLASK_APP=app && \
     export FLASK_ENV=development
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port", "5000"]
+CMD [ "gunicorn", "--conf", "/app/gunicorn_conf.py", "--bind", "0.0.0.0:5000", "app:app"]

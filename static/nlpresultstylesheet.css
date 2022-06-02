@@ -1,0 +1,136 @@
+body {
+	background-color: #5D92A8;
+	color: #13303B;
+	font-family:'Poppins', Arial, Sans-serif;
+	font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #13303B;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #B8CAE1;
+  padding: 8px;
+  text-decoration: none;
+  background-color: #13303B;
+}
+
+li a:hover {
+	background-color: #5D92A8;
+}
+
+h1 {
+	color: #13303B;
+	text-align: center;
+}
+
+p {
+	color: #13303B;
+	text-align: center;
+}
+
+img {
+	border: 0;
+	border-radius: 0.5rem;
+	display: block;
+    margin-left: 2em;
+    margin-right: 5em;
+}
+
+footer {
+	background-color: #B8CAE1;
+	display: block;
+	padding: 5px;
+	font-size: 12px;
+	text-align: center;
+}
+
+iframe {
+	background-color: transparent;
+	border: 3px solid #13303B;
+	color: black;
+}
+
+
+[type="file"] {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+
+[type="submit"] {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+
+[type="file"] + label {
+  background-color: #13303B;
+  border: 3px solid #13303B;
+  border-radius: 0.5rem;
+  color: #B8CAE1;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 4rem;
+  line-height: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  transition: background-color 0.3s;
+}
+[type="file"]:focus + label,
+[type="file"] + label:hover {
+    background-color: #5D92A8;
+}
+[type="file"]:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+[type="submit"] + label {
+  background-color: #13303B;
+  border: 3px solid #13303B;
+  border-radius: 0.5rem;
+  color: #B8CAE1;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 4rem;
+  line-height: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  transition: background-color 0.3s;
+}
+[type="submit"]:focus + label,
+[type="submit"] + label:hover {
+    background-color: #5D92A8;
+}
+[type="submit"]:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
